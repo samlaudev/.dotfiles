@@ -109,19 +109,6 @@ source $ZSH/oh-my-zsh.sh
 # MySQL
 [[ ":$PATH:" =~ ":/usr/local/mysql/bin:" ]] || PATH="$PATH:/usr/local/mysql/bin"
 
-# The script sets environment variables helpful for PostgreSQL
-[[ ":$PATH:" =~ ":/Library/PostgreSQL/11/bin:" ]] || PATH="$PATH:/Library/PostgreSQL/11/bin"
-export PGDATA=/Library/PostgreSQL/11/data
-export PGDATABASE=postgres
-export PGUSER=postgres
-export PGPASSWORD=freedom13
-export PGPORT=5432
-export PGLOCALEDIR=/Library/PostgreSQL/11/share/locale
-#export MANPATH=$MANPATH:/Library/PostgreSQL/11/share/man
-
-# cc0 
-[[ ":$PATH:" =~ ":/usr/local/cc0/bin:" ]] || PATH="$PATH:/usr/local/cc0/bin"
-
 # Neovim
 alias vi="nvim"
 alias vim="nvim"
