@@ -1,10 +1,5 @@
-#!/usr/bin/env bash
-#
-# Created by Sam Lau on 2022/02/17
-# Copyright © 2022 Sam Lau. All rights reserved.
-
-# 1. Install alacritty terminal emulator
-# 2. ./setup.sh
+#!/usr/bin/env bash 
+# Created by Sam Lau on 2022/02/17 Copyright © 2022 Sam Lau. All rights reserved.  1. Install alacritty terminal emulator 2. ./setup.sh
 
 set -ueo pipefail
 #set -x
@@ -24,13 +19,15 @@ if [[ $(uname) == Linux && ! -x /usr/bin/zsh ]]; then
 fi
 
 # oh my zsh
-if [[ -x /usr/bin/curl ]]; then
-    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-elif [[ -x /usr/bin/wget ]]; then
-    sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
-else
-    echo "Please install curl or wget !"
-    exit 1
+if [[ ! -d ~/.oh-my-zsh ]]; then
+    if [[ -x /usr/bin/curl ]]; then
+        sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    elif [[ -x /usr/bin/wget ]]; then
+        sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+    else
+        echo "Please install curl or wget !"
+        exit 1
+    fi
 fi
 
 # powerlevel10k
@@ -61,12 +58,3 @@ echo "alacritty zsh powerlevel10k env alias" | xargs stow
 # Remind user download Meslo Nerd Font and config powerlevel10k style
 echo "Please go to https://github.com/romkatv/powerlevel10k#meslo-nerd-font-patched-for-powerlevel10k download Meslo Nerd Font."
 echo "After download Meslo Nerd Font, please run 'p10k configure' config powerlevel10k style. "
-
-
-
-
-
-
-
-
-
