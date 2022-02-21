@@ -2,7 +2,18 @@
 # Created by Sam Lau on 2022/02/17 Copyright © 2022 Sam Lau. All rights reserved.  1. Install alacritty terminal emulator 2. ./setup.sh
 
 set -ueo pipefail
-#set -x
+set -x
+
+function install_tool () {
+    if [[ $(uname) == Darwin && ! -x "/usr/local/bin/$1" ]]; then
+        brew install "$1"    
+    fi
+
+    if [[ $(uname) == Linux && ! -x "/usr/bin/$1" ]]; then
+        sudo -y apt-get install "$1" 
+    fi 
+}
+
 
 # homebrew
 if [[ $(uname) == Darwin && ! -x /usr/local/bin/brew ]]; then
@@ -10,13 +21,7 @@ if [[ $(uname) == Darwin && ! -x /usr/local/bin/brew ]]; then
 fi
 
 # zsh
-if [[ $(uname) == Darwin && ! -x /usr/local/bin/zsh ]]; then
-    brew install zsh    
-fi
-
-if [[ $(uname) == Linux && ! -x /usr/bin/zsh ]]; then
-    sudo -y apt-get install zsh 
-fi
+install_tool "zsh"
 
 # oh my zsh
 if [[ ! -d ~/.oh-my-zsh ]]; then
@@ -40,14 +45,14 @@ if [[ ! -d ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions ]]; th
    git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}"/plugins/zsh-autosuggestions 
 fi
 
-# download dotfiles and make symbol links
-if [[ $(uname) == Darwin && ! -x /usr/local/bin/stow ]]; then
-    brew install stow    
-fi
+# tmux
+install_tool "tmux"
 
-if [[ $(uname) == Linux && ! -x /usr/bin/stow ]]; then
-   sudo apt-get -y install stow 
-fi
+# oh my tmux
+
+
+# download dotfiles and make symbol links
+install_tool "stow"
 
 if [[ ! -d $HOME/.dotfiles ]]; then
     git clone https://github.com/samlaudev/.dotfiles.git
