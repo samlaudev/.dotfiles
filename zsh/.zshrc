@@ -70,7 +70,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git zsh-autosuggestions docker docker-compose vagrant bundler fzf
+  git zsh-autosuggestions docker docker-compose vagrant fzf
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -104,33 +104,18 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
-# MySQL
-[[ ":$PATH:" =~ ":/usr/local/mysql/bin:" ]] || PATH="$PATH:/usr/local/mysql/bin"
+# Environment variable
+[ -f $HOME/.env ] && source $HOME/.env
 
-# Neovim
-alias vi="nvim"
-alias vim="nvim"
-export VISUAL=nvim
-export VIMCONFIG=~/.config/nvim
-export VIMDATA=~/.local/share/nvim
+# Aliases
+[ -f $HOME/.aliases ] && source $HOME/.aliases
 
 # Tmuxinator
-export EDITOR=nvim
-source ~/.bin/tmuxinator.zsh
+[ -f ~/.bin/tmuxinator.zsh ] && source ~/.bin/tmuxinator.zsh
 
 # Fuzzy Finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# Using a shell alias to prevent accidental nesting
-if [ -n "$NVIM_LISTEN_ADDRESS" ]; then
-  if [ -x "$(command -v nvr)" ]; then
-    alias nvim=nvr
-  else
-    alias nvim='echo "No nesting!"'
-  fi
-fi
 
 # z - jump around
 [ -f /usr/local/etc/profile.d/z.sh ] && . /usr/local/etc/profile.d/z.sh
@@ -138,35 +123,12 @@ fi
 # Alias thefuck
 eval $(thefuck --alias)
 
-# Shadowsocks proxy
-export http_proxy=http://127.0.0.1:1087
-export https_proxy=http://127.0.0.1:1087
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
-
-# Fastlane
-[[ ":$PATH:" =~ ":$HOME/.fastlane/bin:" ]] || PATH="$PATH:$HOME/.fastlane/bin"
-
 # Start gost
 gost_started=$(pgrep gost)
 if [ -z "$gost_started" ]; then
   (gost -C ~/.config/gost/gost.json &) &> /dev/null
 fi
 
-
-# Mongodb
-[[ ":$PATH:" =~ ":/usr/local/opt/mongodb-community@4.2/bin:" ]] || PATH="$PATH:/usr/local/opt/mongodb-community@4.2/bin"
-
-# Go
-[[ ":$PATH:" =~ ":/usr/local/go/bin:" ]] || PATH="$PATH:/usr/local/go/bin"
-
-# Load rbenv
-[[ ":$PATH:" =~ ".rbenv/shims:" ]] || eval "$(rbenv init -)"
-
-# Setup pyenv
-[[ ":$PATH:" =~ ".pyenv/shims:" ]] || eval "$(pyenv init --path)"
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+

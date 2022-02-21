@@ -53,7 +53,7 @@ if [[ ! -d $HOME/.dotfiles ]]; then
     git clone https://github.com/samlaudev/.dotfiles.git
 fi
 
-echo "alacritty zsh powerlevel10k env alias" | xargs stow
+echo "alacritty zsh powerlevel10k env aliases" | xargs stow
 
 # Remind user download Meslo Nerd Font and config powerlevel10k style
 echo "Please go to https://github.com/romkatv/powerlevel10k#meslo-nerd-font-patched-for-powerlevel10k download Meslo Nerd Font."
