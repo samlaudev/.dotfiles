@@ -2,7 +2,7 @@
 # Created by Sam Lau on 2022/02/17 Copyright © 2022 Sam Lau. All rights reserved.  1. Install alacritty terminal emulator 2. ./setup.sh
 
 set -ueo pipefail
-set -x
+# set -x
 
 function install_tool () {
     if [[ $(uname) == Darwin && ! -x "/usr/local/bin/$1" ]]; then
@@ -12,6 +12,10 @@ function install_tool () {
     if [[ $(uname) == Linux && ! -x "/usr/bin/$1" ]]; then
         sudo -y apt-get install "$1" 
     fi 
+}
+
+function download_tmux_plugins () {
+    git clone https://github.com/tmux-plugins/"$1" "$HOME"/.tmux/plugins/"$1"
 }
 
 
@@ -49,16 +53,22 @@ fi
 install_tool "tmux"
 
 # oh my tmux
+if [[ ! -d "$HOME"/.tmux ]]; then
+    git clone https://github.com/gpakosz/.tmux.git "$HOME"/.tmux
+    ln -sf "$HOME"/.tmux/.tmux.conf "$HOME"/.tmux.conf
+    
+    download_tmux_plugins "tpm"
+fi
 
-
-# download dotfiles and make symbol links
+# Download dotfiles and make symbol links
 install_tool "stow"
 
 if [[ ! -d $HOME/.dotfiles ]]; then
     git clone https://github.com/samlaudev/.dotfiles.git
 fi
 
-echo "alacritty zsh powerlevel10k env aliases vim git" | xargs stow
+cd "$HOME/.dotfiles" 
+echo "alacritty zsh powerlevel10k env aliases vim git tmux" | xargs stow
 
 # Remind user download Meslo Nerd Font and config powerlevel10k style
 echo "Please go to https://github.com/romkatv/powerlevel10k#meslo-nerd-font-patched-for-powerlevel10k download Meslo Nerd Font."
