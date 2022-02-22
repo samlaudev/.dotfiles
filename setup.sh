@@ -1,5 +1,9 @@
 #!/usr/bin/env bash 
-# Created by Sam Lau on 2022/02/17 Copyright © 2022 Sam Lau. All rights reserved.  1. Install alacritty terminal emulator 2. ./setup.sh
+# Created by Sam Lau on 2022/02/17 
+# Copyright © 2022 Sam Lau. All rights reserved.  
+
+# 1. Install alacritty terminal emulator 
+# 2. ./setup.sh
 
 set -ueo pipefail
 # set -x
