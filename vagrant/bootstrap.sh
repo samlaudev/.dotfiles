@@ -8,6 +8,3 @@ wget https://raw.staticdn.net/samlaudev/.dotfiles/main/vagrant/sources.list -O /
 
 # Update system software
 apt-get update && apt-get -y upgrade
-
-# Setup development environment
-apt-get install -y fzf fd-find ripgrep
