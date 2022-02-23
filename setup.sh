@@ -14,7 +14,7 @@ function install_tool () {
     fi
 
     if [[ $(uname) == Linux && ! -x "/usr/bin/$1" ]]; then
-        sudo -y apt-get install "$1" 
+        sudo apt-get install -y "$1" 
     fi 
 }
 
@@ -32,7 +32,7 @@ fi
 install_tool "zsh"
 
 # oh my zsh
-if [[ ! -d ~/.oh-my-zsh ]]; then
+if [[ ! -e ~/.oh-my-zsh ]]; then
     if [[ -x /usr/bin/curl ]]; then
         sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     elif [[ -x /usr/bin/wget ]]; then
@@ -44,12 +44,12 @@ if [[ ! -d ~/.oh-my-zsh ]]; then
 fi
 
 # powerlevel10k
-if [[ ! -d ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k ]]; then
+if [[ ! -e ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k ]]; then
     git clone --depth=1 https://gitee.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/themes/powerlevel10k
 fi
 
 # zsh-autosuggestions
-if [[ ! -d ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions ]]; then
+if [[ ! -e ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions ]]; then
    git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}"/plugins/zsh-autosuggestions 
 fi
 
@@ -57,7 +57,7 @@ fi
 install_tool "tmux"
 
 # oh my tmux
-if [[ ! -d "$HOME"/.tmux ]]; then
+if [[ ! -e "$HOME"/.tmux ]]; then
     git clone https://github.com/gpakosz/.tmux.git "$HOME"/.tmux
     ln -sf "$HOME"/.tmux/.tmux.conf "$HOME"/.tmux.conf
     
@@ -67,11 +67,11 @@ fi
 # Download dotfiles and make symbol links
 install_tool "stow"
 
-if [[ ! -d $HOME/.dotfiles ]]; then
+if [[ ! -e $HOME/.dotfiles ]]; then
     git clone https://github.com/samlaudev/.dotfiles.git
 fi
 
-cd "$HOME/.dotfiles" 
+cd "$HOME/.dotfiles" || return 
 echo "alacritty zsh powerlevel10k env aliases vim git tmux" | xargs stow
 
 # Remind user download Meslo Nerd Font and config powerlevel10k style
