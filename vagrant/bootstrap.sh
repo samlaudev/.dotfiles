@@ -10,4 +10,16 @@ wget https://raw.staticdn.net/samlaudev/.dotfiles/main/vagrant/sources.list -O /
 apt-get update && apt-get -y upgrade
 
 # Install development software
-apt-get install -y zsh fzf fd-find ripgrep
+apt-get install -y zsh fzf fd-find ripgrep tldr
+
+# Set timezone and environment
+timedatectl set-timezone Asia/Shanghai
+
+if ! grep -qF "LANGUAGE=" /etc/environment; then
+    {
+        echo "LANGUAGE=en_US.UTF-8"
+        echo "LC_ALL=en_US.UTF-8"
+        echo "LANG=en_US.UTF-8"
+        echo "LC_CTYPE=en_US.UTF-8"
+    } >> /etc/environment
+fi
