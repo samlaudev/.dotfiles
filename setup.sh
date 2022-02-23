@@ -6,7 +6,7 @@
 # 2. ./setup.sh
 
 set -ueo pipefail
-# set -x
+set -x
 
 function install_tool () {
     if [[ $(uname) == Darwin && ! -x "/usr/local/bin/$1" ]]; then
@@ -14,7 +14,7 @@ function install_tool () {
     fi
 
     if [[ $(uname) == Linux && ! -x "/usr/bin/$1" ]]; then
-        sudo apt-get install -y "$1" 
+        apt-get install -y "$1" 
     fi 
 }
 
@@ -22,10 +22,12 @@ function download_tmux_plugins () {
     git clone https://github.com/tmux-plugins/"$1" "$HOME"/.tmux/plugins/"$1"
 }
 
+# Replace github url
+git config --global url."https://gitclone.com/github.com".insteadOf https://github.com
 
 # homebrew
 if [[ $(uname) == Darwin && ! -x /usr/local/bin/brew ]]; then
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    /bin/bash -c "$(curl -fsSL https://raw.staticdn.net/Homebrew/install/HEAD/install.sh)"
 fi
 
 # zsh
@@ -34,9 +36,9 @@ install_tool "zsh"
 # oh my zsh
 if [[ ! -e ~/.oh-my-zsh ]]; then
     if [[ -x /usr/bin/curl ]]; then
-        sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+        sh -c "$(curl -fsSL https://raw.staticdn.net/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     elif [[ -x /usr/bin/wget ]]; then
-        sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+        sh -c "$(wget https://raw.staticdn.net/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
     else
         echo "Please install curl or wget !"
         exit 1
