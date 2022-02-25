@@ -67,8 +67,7 @@ if [[ ! -e $HOME/.dotfiles ]]; then
 fi
 
 cd "$HOME/.dotfiles" || return 
-echo "alacritty zsh powerlevel10k env aliases vim git tmux " | xargs stow
-ln -sf "$HOME/.dotfiles/ssh/config" "$HOME/.ssh/config"
+echo "alacritty zsh powerlevel10k env aliases vim git tmux ssh" | xargs stow
 
 # Remind user download Meslo Nerd Font and config powerlevel10k style
 echo "Please go to https://github.com/romkatv/powerlevel10k#meslo-nerd-font-patched-for-powerlevel10k download Meslo Nerd Font."
