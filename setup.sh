@@ -70,6 +70,9 @@ cd "$HOME/.dotfiles" || return
 echo "alacritty zsh powerlevel10k env aliases vim git tmux ssh" | xargs stow
 
 # Install common tools
+for item in {"tldr","exa","fzf","fd","bat","jq","fx","rg","lazygit"}; do
+    install_tool "${item}"
+done
 
 # Remind user download Meslo Nerd Font and config powerlevel10k style
 echo "Please go to https://github.com/romkatv/powerlevel10k#meslo-nerd-font-patched-for-powerlevel10k download Meslo Nerd Font."
