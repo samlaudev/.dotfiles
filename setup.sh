@@ -8,14 +8,20 @@
 set -ueo pipefail
 set -x
 
-function install_tool () {
+install_tool() {
     if [[ ! -x "$(command -v "$1")" ]]; then
         brew install "$1"    
     fi
 }
 
-function download_tmux_plugins () {
+download_tmux_plugins() {
     git clone https://github.com/tmux-plugins/"$1" "$HOME"/.tmux/plugins/"$1"
+}
+
+remove_original_dotfile() {
+    if [[ ! -h "$HOME/$1" ]]; then
+        rm -rf "${HOME:?}/$1"
+    fi
 }
 
 # homebrew
@@ -65,6 +71,11 @@ install_tool "stow"
 if [[ ! -e $HOME/.dotfiles ]]; then
     git clone https://github.com/samlaudev/.dotfiles.git
 fi
+
+# Remove original dotfiles before make symbol links
+export -f remove_original_dotfile
+
+echo ".alacritty.yml .aliases .env .gitconfig .gitignore_global .stCommitMsg .p10k.zsh .ssh .tmux.conf.local .vimrc .zshrc" | xargs bash -c 'remove_original_dotfile "$@"'
 
 cd "$HOME/.dotfiles" || return 
 echo "alacritty zsh powerlevel10k env aliases vim git tmux ssh" | xargs stow
