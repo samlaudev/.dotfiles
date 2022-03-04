@@ -24,6 +24,28 @@ remove_original_dotfile() {
     fi
 }
 
+log_message() {
+    green="\x1b[32;21m"
+    yellow="\x1b[33;21m"
+    red="\x1b[31;21m"
+    reset="\x1b[0m"
+
+   case "${1}" in
+       info)
+           echo -e "$green$2$reset"
+       ;;
+       warning)
+           echo -e "$yellow$2$reset"
+       ;;
+       error)
+           echo -e "$red$2$reset"
+       ;;
+       *)
+           echo "$1"
+       ;;
+   esac
+}
+
 # homebrew
 if [[ ! -x "$(command -v brew)" ]]; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -86,5 +108,5 @@ for item in {"tldr","exa","fzf","fd","bat","jq","fx","rg","lazygit"}; do
 done
 
 # Remind user download Meslo Nerd Font and config powerlevel10k style
-echo "Please go to https://github.com/romkatv/powerlevel10k#meslo-nerd-font-patched-for-powerlevel10k download Meslo Nerd Font."
-echo "After download Meslo Nerd Font, please run 'p10k configure' config powerlevel10k style. "
+log_message info "Please go to https://github.com/romkatv/powerlevel10k#meslo-nerd-font-patched-for-powerlevel10k download Meslo Nerd Font."
+log_message info "After download Meslo Nerd Font, please run 'p10k configure' config powerlevel10k style. "
