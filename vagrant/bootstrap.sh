@@ -10,7 +10,7 @@ wget https://raw.staticdn.net/samlaudev/.dotfiles/main/vagrant/sources.list -O /
 apt-get update && apt-get -y upgrade
 
 # Install development software
-apt-get install -y zsh fzf fd-find ripgrep tldr "linux-tools-$(uname -r)"
+apt-get install -y zsh fzf fd-find ripgrep tldr "linux-tools-$(uname -r)" iotop iftop gdb 
 
 # Set timezone and environment
 timedatectl set-timezone Asia/Shanghai

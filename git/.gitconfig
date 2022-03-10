@@ -18,3 +18,5 @@
 [user]
 	email = samlaudev@gmail.com
 	name = Sam Lau
+[pull]
+	rebase = true
