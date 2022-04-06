@@ -16,12 +16,23 @@ apt-get -y -qq upgrade > /dev/null
 apt-get install -y -qq zsh fzf fd-find ripgrep tldr "linux-tools-$(uname -r)" iotop iftop gdb > /dev/null
 
 # Install docker
-if [[ ! -f "get-dcoker.sh" ]]; then
+if [[ ! -e "get-dcoker.sh" ]]; then
     curl -fsSL https://get.docker.com -o get-docker.sh
 fi
 
 if [[ ! -x $(command -v docker) ]]; then
     sh get-docker.sh 
+fi
+
+# Change docker image source to speed up
+if [[ ! -e /etc/docker ]]; then
+    mkdir -p /etc/docker
+fi
+
+if [[ ! -e /etc/docker/daemon.json ]]; then
+    wget https://raw.staticdn.net/samlaudev/.dotfiles/main/vagrant/daemon.json -O /etc/docker/daemon.json
+    systemctl daemon-reload
+    systemctl restart docker
 fi
 
 # Set timezone and environment
