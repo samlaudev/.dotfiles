@@ -29,11 +29,9 @@ if [[ ! -e /etc/docker ]]; then
     mkdir -p /etc/docker
 fi
 
-if [[ ! -e /etc/docker/daemon.json ]]; then
-    wget https://raw.staticdn.net/samlaudev/.dotfiles/main/vagrant/daemon.json -O /etc/docker/daemon.json
-    systemctl daemon-reload
-    systemctl restart docker
-fi
+wget https://raw.staticdn.net/samlaudev/.dotfiles/main/vagrant/daemon.json -O /etc/docker/daemon.json
+systemctl daemon-reload
+systemctl restart docker
 
 # Set timezone and environment
 timedatectl set-timezone Asia/Shanghai
