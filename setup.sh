@@ -95,12 +95,13 @@ if [[ ! -e $HOME/.dotfiles ]]; then
 fi
 
 # Remove original dotfiles before make symbol links
-export -f remove_original_dotfile
-
-echo ".alacritty.yml .aliases .env .gitconfig .gitignore_global .stCommitMsg .p10k.zsh .ssh .tmux.conf.local .vimrc .zshrc" | xargs bash -c 'remove_original_dotfile "$@"'
+exist_dotfiles=('.alacritty.yml' '.aliases' '.env' '.gitconfig' '.gitignore_global' '.stCommitMsg' '.p10k.zsh' '.ssh' '.tmux.conf.local' '.vimrc' '.zshrc' '.myclirc')
+for item in "${exist_dotfiles[@]}"; do
+    remove_original_dotfile "${item}"
+done
 
 cd "$HOME/.dotfiles" || return 
-echo "alacritty zsh powerlevel10k env aliases vim git tmux ssh" | xargs stow
+echo "alacritty zsh powerlevel10k env aliases vim git tmux ssh mycli" | xargs stow
 
 # Install common tools
 for item in {"tldr","exa","fzf","fd","bat","jq","fx","rg","lazygit"}; do
