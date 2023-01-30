@@ -104,7 +104,7 @@ cd "$HOME/.dotfiles" || return
 echo "alacritty zsh powerlevel10k env aliases vim git tmux ssh mycli" | xargs stow
 
 # Install common tools
-for item in {"tldr","exa","fzf","fd","bat","jq","fx","rg","lazygit","pyenv","rbenv","ruby-build"}; do
+for item in {"tldr","exa","fzf","fd","bat","jq","fx","rg","lazygit","pyenv","rbenv","ruby-build","chisel"}; do
     install_tool "${item}"
 done
 
