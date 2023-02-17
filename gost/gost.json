@@ -1,0 +1,6 @@
+{
+  "Debug": false,
+  "Retries": 3,
+  "ServeNodes": ["ss://aes-128-cfb:sspassword@:31325"],
+  "ChainNodes": ["https://username:password@domainname:443"]
+}
