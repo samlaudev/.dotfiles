@@ -13,7 +13,7 @@ apt-get -y -qq update > /dev/null
 apt-get -y -qq upgrade > /dev/null
 
 # Install development software
-apt-get install -y -qq zsh fzf fd-find ripgrep tldr "linux-tools-$(uname -r)" iotop iftop gdb > /dev/null
+apt-get install -y -qq zsh fzf fd-find ripgrep tldr "linux-tools-$(uname -r)" iotop iftop gdb python3-venv > /dev/null
 
 # Install docker
 if [[ ! -e "get-dcoker.sh" ]]; then
