@@ -25,3 +25,15 @@ fi
 if [[ ! -e ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions ]]; then
    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 fi
+
+# Install pyenv
+if [[ ! -e $HOME/.pyenv ]]; then
+    curl https://pyenv.run | bash
+fi
+
+# Download .env
+if [[ ! -e ".env" ]]; then
+    wget https://raw.staticdn.net/samlaudev/.dotfiles/main/vagrant/.env -O .env
+    echo "# Environment variable" >> $HOME/.zshrc
+    echo "[ -f $HOME/.env ] && source $HOME/.env" ?? $HOME/.zshrc
+fi

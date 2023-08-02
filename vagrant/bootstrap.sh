@@ -13,7 +13,7 @@ apt-get -y -qq update > /dev/null
 apt-get -y -qq upgrade > /dev/null
 
 # Install development software
-apt-get install -y -qq zsh fzf fd-find ripgrep tldr "linux-tools-$(uname -r)" iotop iftop gdb python3-venv > /dev/null
+apt-get install -y -qq zsh fzf fd-find ripgrep tldr "linux-tools-$(uname -r)" iotop iftop gdb > /dev/null
 
 # Install docker
 if [[ ! -e "get-dcoker.sh" ]]; then
@@ -21,7 +21,7 @@ if [[ ! -e "get-dcoker.sh" ]]; then
 fi
 
 if [[ ! -x $(command -v docker) ]]; then
-    sh get-docker.sh 
+    sh get-docker.sh
 fi
 
 # Change docker image source to speed up
@@ -44,3 +44,11 @@ if ! grep -qF "LANGUAGE=" /etc/environment; then
         echo "LC_CTYPE=en_US.UTF-8"
     } >> /etc/environment
 fi
+
+# Download setup.sh
+if [[ ! -e "setup.sh" ]]; then
+    wget https://raw.staticdn.net/samlaudev/.dotfiles/main/vagrant/setup.sh -O setup.sh
+    chmod +x setup.sh
+    chown vagrant:vagrant setup.sh
+fi
+

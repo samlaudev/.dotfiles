@@ -1,7 +1,7 @@
 [credential]
 	helper = osxkeychain
 [core]
-	excludesfile = ~/.gitignore_global
+	excludesfile = /Users/samlau/.gitignore_global
 	editor = vim
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
