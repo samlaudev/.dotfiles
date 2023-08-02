@@ -35,5 +35,5 @@ fi
 if [[ ! -e ".env" ]]; then
     wget https://raw.staticdn.net/samlaudev/.dotfiles/main/vagrant/.env -O .env
     echo "# Environment variable" >> $HOME/.zshrc
-    echo "[ -f $HOME/.env ] && source $HOME/.env" ?? $HOME/.zshrc
+    echo '[ -f $HOME/.env ] && source $HOME/.env' >> $HOME/.zshrc
 fi
