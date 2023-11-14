@@ -123,11 +123,5 @@ source $ZSH/oh-my-zsh.sh
 # Alias thefuck
 eval $(thefuck --alias)
 
-# Start gost
-gost_started=$(pgrep gost)
-if [ -z "$gost_started" ]; then
-  (gost -C ~/.config/gost/gost.json &) &> /dev/null
-fi
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
