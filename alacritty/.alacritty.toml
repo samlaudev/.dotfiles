@@ -1,0 +1,18 @@
+[colors.normal]
+green = "#3cb371"
+
+[colors.primary]
+background = "#1d1f21"
+foreground = "#c5c8c6"
+
+[font]
+size = 14.0
+
+[font.normal]
+family = "MesloLGS NF"
+
+[window]
+dynamic_title = true
+opacity = 0.8
+startup_mode = "Maximized"
+title = "Alacritty"
