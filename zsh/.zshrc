@@ -121,9 +121,6 @@ source $ZSH/oh-my-zsh.sh
 # z - jump around
 [ -f /opt/homebrew/etc/profile.d/z.sh ] && source /opt/homebrew/etc/profile.d/z.sh 2> /dev/null
 
-# Alias thefuck
-eval $(thefuck --alias)
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
