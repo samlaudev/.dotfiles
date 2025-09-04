@@ -6,10 +6,13 @@
     <string>com.jupyter.lab</string>
     <key>ProgramArguments</key>
     <array>
-    	<string>/Users/samlau/.pyenv/shims/jupyter</string>
-    	<string>lab</string>
-    	<string>--no-browser</string>
-    	<string>--notebook-dir=/Users/samlau/Repository/Language/Python/jupyter</string>
+        <string>/Users/samlau/.local/bin/uv</string>
+        <string>tool</string>
+        <string>run</string>
+        <string>jupyter</string>
+        <string>lab</string>
+        <string>--no-browser</string>
+        <string>--notebook-dir=/Users/samlau/Repository/Language/Python/jupyter</string>
     </array>
     <key>RunAtLoad</key>
     <true/>

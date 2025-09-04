@@ -6,7 +6,10 @@
     <string>com.beancount.fava</string>
     <key>ProgramArguments</key>
     <array>
-    	<string>/Users/samlau/.pyenv/shims/fava</string>
+        <string>/Users/samlau/.local/bin/uv</string>
+        <string>tool</string>
+        <string>run</string>
+        <string>fava</string>
     	<string>/Users/samlau/Library/Mobile Documents/com~apple~CloudDocs/Data/Beancount/main.bean</string>
     </array>
     <key>RunAtLoad</key>
