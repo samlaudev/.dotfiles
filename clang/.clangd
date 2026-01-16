@@ -1,0 +1,27 @@
+CompileFlags:
+  Add:
+    - -Xclang
+    - -fobjc-arc
+    - -Xclang
+    - -fobjc-weak
+    - -Xclang
+    - -fmodules
+    - -F/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.2.sdk/System/Library/Frameworks
+    - -framework
+    - UIKit
+    - -framework
+    - Foundation
+
+Diagnostics:
+  ClangTidy:
+    Add:
+      - modernize-*
+      - performance-*
+      - bugprone-*
+    Remove:
+      - modernize-use-trailing-return-type
+      - modernize-avoid-c-arrays
+      - cppcoreguidelines-*
+
+Index:
+  Background: Build

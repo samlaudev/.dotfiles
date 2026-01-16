@@ -1,0 +1,33 @@
+[
+  {
+    "directory": "/Users/samlau/Repository/YSB/code/YSBPro_dev_ai_chat",
+    "file": "YSBPro/main.m",
+    "output": "YSBPro.app",
+    "arguments": [
+      "clang",
+      "-x", "objective-c",
+      "-fobjc-arc",
+      "-fobjc-weak",
+      "-fmodules",
+      "-fmodules-cache-path=/Users/samlau/Library/Developer/Xcode/DerivedData/ModuleCache",
+      "-isysroot", "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.2.sdk",
+      "-target", "arm64-apple-ios12.0",
+      "-I/Users/samlau/Library/Developer/Xcode/DerivedData/YSBPro-edmrcqnqleacpudkbwtzzbxmmvyk/Build/Products/Debug-iphoneos/include",
+      "-I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
+      "-I../YSBBusiness",
+      "-F/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.2.sdk/System/Library/Frameworks",
+      "-framework", "UIKit",
+      "-framework", "Foundation",
+      "-DDEBUG=1",
+      "-DHAVE_INTTYPES_H",
+      "-DHAVE_PKCRYPT",
+      "-DHAVE_STDINT_H",
+      "-DHAVE_WZAES",
+      "-DHAVE_ZLIB",
+      "-DZLIB_COMPAT",
+      "-DSENSORS_ANALYTICS_DISABLE_UIWEBVIEW=1",
+      "-DYSB_DEBUG_TOOLKIT_SWITCH=1",
+      "-c", "YSBPro/main.m"
+    ]
+  }
+]
