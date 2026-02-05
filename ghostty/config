@@ -1,0 +1,49 @@
+
+# Keybinds
+keybind = ctrl+z=close_surface
+keybind = shift+ctrl+d=new_split:right
+keybind = shift+ctrl+v=new_split:down
+keybind = global:ctrl+`=toggle_quick_terminal
+keybind = shift+ctrl+.=reload_config
+keybind = cmd+shift+w=close_window
+
+
+# Visual: font, theme, cursors
+#font-family = "JetBrains Mono"
+font-size = 16
+
+# Try `xcodedarkhc` for higher contrast
+theme = "Aura"
+cursor-style = underline
+
+quick-terminal-position = top
+quick-terminal-autohide = true
+
+initial-window = false
+
+
+# Shell and OS integration
+term=xterm-256color
+shell-integration = zsh
+shell-integration-features = cursor, sudo, title
+
+# Decoration was broken on MacOS 26
+# macos-titlebar-style = hidden
+# window-decoration = false
+window-theme = system
+macos-option-as-alt = true
+
+# YOLO updates
+auto-update-channel = tip
+
+
+# Don't show a dialog when I'm slamming cmd+q
+#confirm-close-surface = false
+
+# Auto-update settings
+auto-update = download
+
+
+# Quick Terminal
+quick-terminal-animation-duration = 0
+keybind = shift+enter=text:\n
