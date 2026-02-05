@@ -1,12 +1,11 @@
 
 # Keybinds
-keybind = ctrl+z=close_surface
-keybind = shift+ctrl+d=new_split:right
-keybind = shift+ctrl+v=new_split:down
-keybind = global:ctrl+`=toggle_quick_terminal
-keybind = shift+ctrl+.=reload_config
-keybind = cmd+shift+w=close_window
-
+keybind = shift+enter=text:\n
+# Split navigation (cmd + hjkl)
+keybind = super+h=goto_split:left
+keybind = super+l=goto_split:right
+keybind = super+j=goto_split:up
+keybind = super+k=goto_split:down
 
 # Visual: font, theme, cursors
 #font-family = "JetBrains Mono"
@@ -46,4 +45,3 @@ auto-update = download
 
 # Quick Terminal
 quick-terminal-animation-duration = 0
-keybind = shift+enter=text:\n
