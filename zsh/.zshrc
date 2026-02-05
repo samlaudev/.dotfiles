@@ -118,9 +118,6 @@ source $ZSH/oh-my-zsh.sh
 # Fuzzy Finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# McFly - improved shell history search
-eval "$(mcfly init zsh)"
-
 # z - jump around
 [ -f /opt/homebrew/etc/profile.d/z.sh ] && source /opt/homebrew/etc/profile.d/z.sh 2> /dev/null
 
@@ -144,5 +141,16 @@ esac
 
 . "$HOME/.local/bin/env"
 
-# Broot - interactive file browser and tree view
-source /Users/samlau/.config/broot/launcher/bash/br
+# eza - modern ls replacement
+alias ls='eza'
+alias ll='eza -la --git'
+alias lt='eza --tree'
+alias tree='eza --tree'
+
+# McFly - improved shell history search
+export MCFLY_FUZZY=2
+export MCFLY_RESULTS=20
+eval "$(mcfly init zsh)"
+
+# broot - add the br function
+eval "$(broot --print-shell-function zsh)"
