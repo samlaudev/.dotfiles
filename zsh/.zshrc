@@ -118,6 +118,9 @@ source $ZSH/oh-my-zsh.sh
 # Fuzzy Finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# McFly - improved shell history search
+eval "$(mcfly init zsh)"
+
 # z - jump around
 [ -f /opt/homebrew/etc/profile.d/z.sh ] && source /opt/homebrew/etc/profile.d/z.sh 2> /dev/null
 
@@ -140,3 +143,6 @@ esac
 # pnpm end
 
 . "$HOME/.local/bin/env"
+
+# Broot - interactive file browser and tree view
+source /Users/samlau/.config/broot/launcher/bash/br
