@@ -1,9 +1,7 @@
 
 # Keybinds
 keybind = shift+enter=text:\n
-# Split navigation (cmd + hjkl)
-keybind = super+h=goto_split:left
-keybind = super+l=goto_split:right
+# Split navigation (super + jk)
 keybind = super+j=goto_split:up
 keybind = super+k=goto_split:down
 
