@@ -9,18 +9,17 @@ keybind = super+k=goto_split:down
 #font-family = "JetBrains Mono"
 font-size = 16
 
-background-opacity = 1
+background-opacity = 0.9
 background-blur-radius = 20
 
 # Try `xcodedarkhc` for higher contrast
-theme = "Aura"
+theme = Aura
 cursor-style = underline
 
 quick-terminal-position = top
 quick-terminal-autohide = true
 
 initial-window = false
-
 
 # Shell and OS integration
 term=xterm-256color
@@ -30,6 +29,10 @@ shell-integration-features = cursor, sudo, title
 # Decoration was broken on MacOS 26
 # macos-titlebar-style = hidden
 # window-decoration = false
+
+# Tab titlebar style - try different values for better tab visibility
+# Valid options: native, transparent, tabs, hidden
+macos-titlebar-style = tabs
 window-theme = system
 macos-option-as-alt = true
 
@@ -42,7 +45,6 @@ auto-update-channel = tip
 
 # Auto-update settings
 auto-update = download
-
 
 # Quick Terminal
 quick-terminal-animation-duration = 0

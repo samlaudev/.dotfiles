@@ -20,3 +20,5 @@
 	name = Sam Lau
 [pull]
 	rebase = true
+[safe]
+	directory = *
