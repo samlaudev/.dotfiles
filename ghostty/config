@@ -32,7 +32,7 @@ shell-integration-features = cursor, sudo, title
 
 # Tab titlebar style - try different values for better tab visibility
 # Valid options: native, transparent, tabs, hidden
-macos-titlebar-style = tabs
+macos-titlebar-style = transparent
 window-theme = system
 macos-option-as-alt = true
 

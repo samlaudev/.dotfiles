@@ -154,3 +154,4 @@ eval "$(mcfly init zsh)"
 
 # broot - add the br function
 eval "$(broot --print-shell-function zsh)"
+
