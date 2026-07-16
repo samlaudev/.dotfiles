@@ -108,6 +108,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Environment variable
 [ -f $HOME/.env ] && source $HOME/.env
+[ -f $HOME/.access_token ] && source $HOME/.access_token
 
 # Aliases
 [ -f $HOME/.aliases ] && source $HOME/.aliases
@@ -154,4 +155,6 @@ eval "$(mcfly init zsh)"
 
 # broot - add the br function
 eval "$(broot --print-shell-function zsh)"
+
+
 
