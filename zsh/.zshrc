@@ -156,5 +156,5 @@ eval "$(mcfly init zsh)"
 # broot - add the br function
 eval "$(broot --print-shell-function zsh)"
 
-
-
+# Worktrunk
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
