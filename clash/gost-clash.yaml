@@ -1,0 +1,50 @@
+# 适用于 haoel 教程中 GOST v2 的 http2:// 或 https:// 代理服务。
+# 导入前替换 server、port、username、password；server 只填域名，不带 https://。
+# 若密码含单引号，请在 YAML 单引号字符串中将它写成两个单引号。
+mixed-port: 7890
+allow-lan: false
+mode: rule
+log-level: info
+ipv6: false
+
+# 国内域名和 IP 分类数据库，每 24 小时自动更新。
+geodata-mode: false
+geo-auto-update: true
+geo-update-interval: 24
+geox-url:
+  geosite: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat"
+  mmdb: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb"
+
+proxies:
+  - name: GOST-VPS
+    type: http
+    server: "example.net"
+    port: 443
+    username: "account"
+    password: "password"
+    tls: true
+    skip-cert-verify: false
+
+proxy-groups:
+  - name: GOST
+    type: select
+    proxies:
+      - GOST-VPS
+      - DIRECT
+
+# 本机和局域网直连；按域名分类优先分流，再按国内 IP 补充匹配。
+rules:
+  - DOMAIN-SUFFIX,localhost,DIRECT
+  - DOMAIN-SUFFIX,local,DIRECT
+  - IP-CIDR,127.0.0.0/8,DIRECT,no-resolve
+  - IP-CIDR,10.0.0.0/8,DIRECT,no-resolve
+  - IP-CIDR,172.16.0.0/12,DIRECT,no-resolve
+  - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
+  - IP-CIDR,169.254.0.0/16,DIRECT,no-resolve
+  # 已知国外域名优先走代理，避免受其解析 IP 的地理位置影响。
+  - GEOSITE,geolocation-!cn,GOST
+  - GEOSITE,cn,DIRECT
+  # 此处允许解析域名，用国内 IP 补充识别未收录的国内网站。
+  - GEOIP,CN,DIRECT
+  # 其余请求走 GOST 组中选中的节点。
+  - MATCH,GOST
